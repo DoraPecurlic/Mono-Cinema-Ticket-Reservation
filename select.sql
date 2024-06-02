@@ -128,3 +128,5 @@ WHERE
     Screening.Id = 2;
 
 
+--test delete query
+SELECT * FROM Screening 
