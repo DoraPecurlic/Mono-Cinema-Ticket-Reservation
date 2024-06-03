@@ -71,3 +71,62 @@ JOIN
     Movie 
 ON 
     Screening.MovieId = Movie.Id;
+
+
+--test first update query
+SELECT 
+    Movie.Title, 
+    Screening.ScreeningTime, 
+    CinemaHall.Name AS HallName 
+FROM 
+    Screening 
+JOIN 
+    Movie 
+ON 
+    Screening.MovieId = Movie.Id 
+JOIN 
+    CinemaHall 
+ON 
+    Screening.CinemaHallId = CinemaHall.Id 
+WHERE 
+    Movie.Title = 'The GodFather' 
+    AND CinemaHall.Name = 'Dvorana 3';
+
+--test second update query
+SELECT 
+    Ticket.Id AS TicketId, 
+    Ticket.Price, 
+    Ticket.PaymentDate, 
+    Costumer.Name, 
+    Costumer.Surname, 
+    Screening.ScreeningTime, 
+    Movie.Title AS MovieTitle, 
+    CinemaHall.Name AS HallName 
+FROM 
+    Ticket 
+JOIN 
+    SeatReservation 
+ON 
+    Ticket.SeatReservationId = SeatReservation.Id 
+JOIN 
+    Screening 
+ON 
+    SeatReservation.ScreeningId = Screening.Id 
+JOIN 
+    Movie 
+ON 
+    Screening.MovieId = Movie.Id 
+JOIN 
+    CinemaHall 
+ON 
+    Screening.CinemaHallId = CinemaHall.Id 
+JOIN 
+    Costumer 
+ON 
+    Ticket.CostumerId = Costumer.Id 
+WHERE 
+    Screening.Id = 2;
+
+
+--test delete query
+SELECT * FROM Screening 
